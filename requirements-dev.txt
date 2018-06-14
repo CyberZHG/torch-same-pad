@@ -1,0 +1,8 @@
+setuptools
+twine
+wheel
+numpy
+tensorflow
+nose
+pycodestyle
+coverage
