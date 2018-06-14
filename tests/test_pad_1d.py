@@ -5,7 +5,7 @@ import torch.nn.functional as F
 import numpy as np
 import tensorflow as tf
 
-from torch_same_pad import get_pad_1d
+from torch_same_pad import get_pad
 
 
 class TestPad1D(TestCase):
@@ -37,10 +37,10 @@ class TestPad1D(TestCase):
         keras_output = keras_model.predict(inputs)
 
         torch_input = torch.from_numpy(inputs.transpose((0, 2, 1))).to(torch.float32)
-        torch_pad = get_pad_1d(size=length,
-                               kernel_size=kernel_size,
-                               stride=stride,
-                               dilation=dilation)
+        torch_pad = get_pad(size=length,
+                            kernel_size=kernel_size,
+                            stride=stride,
+                            dilation=dilation)
         args += f' pad={torch_pad}'
         torch_conv = torch.nn.Conv1d(in_channels=channels,
                                      out_channels=filters,
